@@ -1,132 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet"> <!-- Nueva tipografía -->
-    <style>
-        body {
-            background-image: url('https://images.unsplash.com/photo-1519520104014-df63821cb6f9?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-family: 'Roboto', sans-serif; /* Aplicar la nueva tipografía */
-        }
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.85); /* Fondo blanco con transparencia */
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 100%;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-        .form-group {
-            margin-bottom: 2rem; /* Más espacio entre los campos */
-        }
-        .form-group label {
-            color: #333;
-            margin-bottom: 0.5rem; /* Espacio adicional entre label y caja */
-            display: block; /* Asegurar que el label está en su propia línea */
-            font-weight: 500;
-        }
-        .form-control {
-            border-radius: 30px; /* Bordes más redondeados para modernidad */
-            padding: 10px 15px;
-            font-size: 1rem;
-            width: 100%;
-        }
-        .links {
-            text-align: center;
-            margin-top: 1.5rem;
-        }
-        .links a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .links a:hover {
-            text-decoration: underline;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 10px 30px;
-            border-radius: 30px; /* Botón redondeado */
-            font-size: 1rem;
-            cursor: pointer;
-            width: 100%; /* Ocupa todo el ancho */
-            color: white; /* Color blanco del texto */
-            transition: background-color 0.3s ease;
-            display: flex; /* Para usar Flexbox */
-            justify-content: center; /* Centrar el contenido horizontalmente */
-            align-items: center; /* Centrar el contenido verticalmente */
-        }
-        .btn-primary:hover {
-            background-color: #0056b3; /* Cambio de color al pasar el ratón */
-        }
-        .form-group, button {
-            display: flex;
-            justify-content: center; /* Centrar los campos */
-            flex-direction: column; /* Alinear una encima de la otra */
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        /* Estilos para el mensaje de error */
-        .error-message {
-            color: red;
-            text-align: center;
-            margin-bottom: 1rem;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Iniciar sesión</title>
 </head>
+
 <body>
-    <div class="login-container">
-        <h1>Bienvenid@ Ferreteria la 32</h1>
-        <h2>Iniciar Sesión</h2>
+    
 
-        <!-- Aquí va el mensaje de error si existe -->
-        {% if error %}
-            <div class="error-message">{{ error }}</div>
-        {% endif %}
+    <div class="wrapper">
+        <span class="bg-animate"></span>
+        <span class="bg-animate2"></span>
 
-        <form action="/login" method="POST">
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="contraseña">Contraseña</label>
-                <input type="password" class="form-control" id="contraseña" name="contraseña" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-        </form>
-        <div class="links">
-            <a href="/registrarse">¿No tienes cuenta? Regístrate aquí.</a><br>
-            <a href="/actualizar">¿Olvidaste tu contraseña?</a>
+        <!-- Formulario de inicio de sesión -->
+        <div class="form-box login">
+            <h2 class="animation" style="--i:0; --j:21;">Inicia sesión</h2>
+            <form action="/login" method="post">
+                <div class="input-box animation" style="--i:1; --j:22;">
+                    <input type="email" name="email" required>
+                    <label>Correo electrónico</label>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-box animation" style="--i:2; --j:23;">
+                    <input type="password" name="contraseña" required>
+                    <label>Contraseña</label>
+                    <i class='bx bxs-lock-alt'></i>
+                </div>
+                <button type="submit" class="btn animation" style="--i:3; --j:24;">Iniciar sesión</button>
+                <div class="logreg-link animation" style="--i:4; --j:25;">
+                    <p>¿Olvidaste la contraseña? <a href="#" class="registro-link">Recuperar cuenta</a></p>
+                    <p>Volver a <a href="{{ url_for('index') }}" class="registro-link">Inicio</a></p>
+                </div>
+            </form>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="info-text login">
+            <h2 class="animation" style="--i:0; --j:20;">Bienvenido a Ferretería la 32</h2>
+            <p class="animation" style="--i:1; --j:21;">Tu hogar en las mejores manos</p>
+        </div>
+
+<div class="form-box registro">
+    <h2 class="animation" style="--i:17; --j:0;">Recupera tu cuenta</h2>
+    <form action="/cambiar_contraseña" method="post">  <!-- Cambié la URL aquí -->
+        <div class="input-box animation" style="--i:18; --j:1;">
+            <input type="email" name="email" required>
+            <label>Email</label>
+            <i class='bx bxs-envelope'></i>
+        </div>
+        <div class="input-box animation" style="--i:19; --j:2;">
+            <input type="password" name="nueva_contraseña" required>
+            <label>Nueva contraseña</label>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn animation" style="--i:21; --j:4;">Confirmar</button>
+        <div class="logreg-link animation" style="--i:22; --j:5;">
+            <a href="#" class="login-link">Iniciar sesión</a>
+        </div>
+    </form>
+</div>
+
+
+        <!-- Información adicional en la sección de registro -->
+        <div class="info-text registro">
+            <h2 class="animation" style="--i:17; --j:0;">Bienvenido a Ferretería la 32</h2>
+            <p class="animation" style="--i:18; --j:1;">Tu hogar en las mejores manos</p>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script (1).js') }}"></script>
 </body>
+
 </html>
